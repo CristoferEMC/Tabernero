@@ -1,0 +1,109 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fffaf5;
+  color: #333;
+}
+
+/* Topbar */
+.topbar {
+  background-color: #000;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+}
+
+.logo .rojo {
+  color: #d32f2f;
+}
+
+.logo .blanco {
+  color: white;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.menu li a:hover {
+  color: #a8884b;
+}
+
+/* Productos */
+.productos {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.productos h1 {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #a02a2a;
+}
+
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.producto {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 280px;
+  text-align: center;
+}
+
+.producto img {
+  width: 100%;
+  max-width: 160px;
+  margin-bottom: 15px;
+}
+
+.producto h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #b03a2e;
+}
+
+.producto p {
+  font-size: 1rem;
+  color: #555;
+  text-align: justify;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+}

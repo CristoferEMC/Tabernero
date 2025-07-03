@@ -1,0 +1,374 @@
+/* Tipografía general */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo con fuente especial y colores de la bandera del Perú */
+.logo {
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  gap: 0;
+}
+
+.logo .rojo {
+  color: #d32f2f;
+}
+
+.logo .blanco {
+  color: white;
+}
+
+/* Barra de navegación (topbar) */
+.topbar {
+  background-color: #000;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.menu li a:hover {
+  color: #a8884b;
+}
+
+/* Carrusel */
+.hero-carousel {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-overlay h1 {
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 5px black;
+}
+
+.carousel-overlay p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 3px black;
+}
+
+/* Sección: Historia en bloques alternos */
+.historia {
+  background-color: #fff9f0;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;           /* ← centra el contenido horizontalmente */
+  text-align: center;            /* ← centra los textos por defecto */
+}
+
+
+.historia-bloque {
+  display: flex;
+  align-items: center;
+  justify-content: center;       /* ← centra los bloques */
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 20px;
+  max-width: 1000px;             /* ← limita el ancho para centrar mejor */
+  width: 100%;
+}
+
+
+.historia-bloque.reverse {
+  flex-direction: row-reverse;
+}
+
+.historia-texto {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.historia-texto h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #a8884b;
+}
+
+.historia-texto p {
+  font-size: 1.0rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+}
+
+.historia-imagen {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.historia-imagen img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Sección: Productos destacados */
+.destacados {
+  background-color: #000000;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.destacados h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
+  padding: 50px;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #777;
+  padding: 0 30px 20px;
+  text-align: justify;
+}
+
+/* Sección: Viñedos */
+.vinedos {
+  background: url('./img/portada4.png') center/cover no-repeat;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  min-height: 300px;
+}
+
+.vinedos h2 {
+  font-size: 2.8rem;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.vinedos p {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: auto;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Sección: Llamado a la acción */
+.cta {
+  background-color: #dd0000ec;
+  color: white;
+  padding: 100px 200px;
+}
+
+.cta-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Imagen a la izquierda */
+.cta-imagen {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.cta-imagen img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Texto + formulario a la derecha */
+.cta-texto {
+  flex: 1;
+  min-width: 300px;
+  text-align: center; /* ← centra el texto */
+}
+
+.cta-texto h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center; /* ← asegura que esté centrado */
+}
+
+.cta-texto p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center; /* ← asegura que esté centrado */
+}
+
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ← centra el formulario */
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.formulario-contacto input[type="text"],
+.formulario-contacto input[type="email"] {
+  padding: 12px 15px;
+  width: 100%;
+  max-width: 400px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.formulario-contacto input[type="text"]:focus,
+.formulario-contacto input[type="email"]:focus {
+  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.8);
+}
+
+
+.formulario-contacto button {
+  background-color: white;
+  color: #cc0909;
+  padding: 12px 25px;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto;             /* ← evita que sea muy ancho */
+  min-width: 150px;        /* ← tamaño mínimo decente */
+}
+
+
+.formulario-contacto button:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* Sección: Ubicación / Mapa */
+.ubicacion {
+  background-color: #f0f0f0;
+  padding: 60px;
+  text-align: center;
+}
+
+.ubicacion h2 {
+  font-size: 2.5rem;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.mapa-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Pie de página */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #000000;
+  color: #ffffff;
+}
