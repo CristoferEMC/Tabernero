@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Tabernero</title>
+    <link rel="stylesheet" href="dashboardstyle.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../img/sabermas.png" alt="Logo Tabernero">
+                <h2>Administracion</h2>
+            </div>
+            <nav>
+                <ul class="menu-lateral">
+                    <li><a href="#" data-section="inicio"><span>🏠</span> Inicio</a></li>
+                    <li><a href="#" data-section="productos"><span>🍷</span> Productos</a></li>
+                    <li><a href="#" data-section="pedidos"><span>📦</span> Pedidos</a></li>
+                    <li><a href="#" data-section="clientes"><span>👥</span> Clientes</a></li>
+                    <li><a href="../login.html"><span>🚪</span> Salir</a></li>
+                </ul>
+            </nav>
+
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section id="inicio" class="dashboard-section active">
+                <h1>Bienvenido al Panel de Administración</h1>
+                <p>Aquí puedes gestionar todo tu sistema Tabernero.</p>
+            </section>
+
+            <section id="productos" class="dashboard-section">
+                <h1>Gestión de Productos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productos-body">
+                        <!-- Aquí se insertarán los productos desde JS -->
+                    </tbody>
+
+                </table>
+            </section>
+
+
+            <!-- Pedidos -->
+            <section id="pedidos" class="dashboard-section">
+                <h1>Gestión de Pedidos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre del Cliente</th>
+                            <th>Producto</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pedidos-body">
+                        <!-- Aquí se insertarán los pedidos -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Clientes -->
+            <section id="clientes" class="dashboard-section">
+                <h1>Gestión de Clientes</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientes-body">
+                        <!-- Aquí se insertarán los clientes -->
+                    </tbody>
+                </table>
+            </section>
+
+
+        </main>
+
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

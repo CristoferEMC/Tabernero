@@ -1,0 +1,107 @@
+/* Fondo general */
+/* Box-sizing universal */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Contenedor del login */
+.login-container {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.logo img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Título */
+.login-container h2 {
+  margin-bottom: 25px;
+  color: #cc0000;
+  font-size: 1.8rem;
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #cc0000;
+}
+
+/* Botón */
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #a80000;
+}
+.login-button {
+  display: inline-block;
+  padding: 12px;
+  width: 100%;
+  background-color: #cc0000;
+  color: white !important;
+  text-align: center;
+  text-decoration: none !important;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #a80000;
+}

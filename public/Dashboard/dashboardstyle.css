@@ -1,0 +1,189 @@
+/* Reset general */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+}
+
+/* Contenedor principal */
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Ocultar secciones por defecto */
+.dashboard-section {
+  display: none;
+}
+
+.dashboard-section.active {
+  display: block;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #a80000;
+  color: white;
+  padding: 30px 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sidebar .logo img {
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+.sidebar h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+/* Menú lateral */
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menu-lateral li {
+  margin-bottom: 15px;
+}
+
+.menu-lateral li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.menu-lateral li a:hover {
+  background-color: #cc0000;
+  transform: translateX(3px);
+}
+
+.menu-lateral li a.active {
+  background-color: #fff;
+  color: #a80000;
+  font-weight: bold;
+  transform: none;
+}
+
+.menu-lateral li a span {
+  font-size: 1.2rem;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+.main-content h1 {
+  color: #a80000;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #f1f1f1;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+th {
+  color: #333;
+  font-weight: bold;
+}
+
+td {
+  color: #555;
+}
+
+.product-img {
+  width: 48px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Botones de acción */
+button.edit,
+button.delete {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button.edit {
+  background-color: #007bff;
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #0056b3;
+}
+
+button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.delete:hover {
+  background-color: #a80000;
+}
+
+/* Botón general (login reutilizable) */
+.login-button {
+  display: inline-block;
+  padding: 12px;
+  width: 100%;
+  background-color: #cc0000;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #a80000;
+}
