@@ -6,71 +6,42 @@
   <title>Carrito de Compras | Tabernero</title>
   <link rel="stylesheet" href="carritostyle.css">
   <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
   <!-- Topbar -->
   <header id="topbar-container"></header>
 
-  <main class="carrito-container">
+  <!-- Mensaje de sesión -->
+  <div id="mensaje-sesion" class="mensaje-sesion">
+    <p>⚠️ Inicia sesión primero antes de comprar.</p>
+  </div>
+
+  <!-- Título y resumen fuera del contenedor principal -->
+  <section class="titulo-carrito">
     <h1>🛒 Tu Carrito de Compras</h1>
-
-    <div class="carrito-items" id="carrito-items">
-      <!-- Aquí se cargarán dinámicamente los productos -->
-      <p class="carrito-vacio">Tu carrito está vacío.</p>
-    </div>
-
-    <div class="carrito-resumen" id="carrito-resumen">
+    <div class="resumen-externo">
       <p>Total: <span id="carrito-total">S/ 0.00</span></p>
       <button class="btn-comprar">Proceder a Pagar</button>
     </div>
+  </section>
+
+  <!-- Contenedor de productos -->
+  <main class="carrito-container">
+    <div class="carrito-items" id="carrito-items">
+      <p class="carrito-vacio">Tu carrito está vacío.</p>
+    </div>
   </main>
 
+  <!-- Pie de página -->
   <footer>
     © 2025 Tabernero. Todos los derechos reservados.
   </footer>
 
   <!-- Scripts -->
   <script src="/componentes/topbar.js"></script>
-  <script>
-    // Cargar carrito desde localStorage (ejemplo)
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    const itemsContainer = document.getElementById('carrito-items');
-    const totalElement = document.getElementById('carrito-total');
-
-    function renderCarrito() {
-      itemsContainer.innerHTML = '';
-      let total = 0;
-
-      if (carrito.length === 0) {
-        itemsContainer.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío.</p>';
-        return;
-      }
-
-      carrito.forEach(item => {
-        const itemHTML = `
-          <div class="item">
-            <img src="${item.imagen}" alt="${item.nombre}">
-            <div class="info">
-              <h3>${item.nombre}</h3>
-              <p>Cantidad: ${item.cantidad}</p>
-              <p>Precio: S/ ${item.precio.toFixed(2)}</p>
-              <p>Subtotal: S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
-            </div>
-          </div>
-        `;
-        itemsContainer.innerHTML += itemHTML;
-        total += item.precio * item.cantidad;
-      });
-
-      totalElement.textContent = `S/ ${total.toFixed(2)}`;
-    }
-
-    renderCarrito();
-  </script>
+  <script src="Carrito.js"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Productos | Tabernero</title>
   <link rel="stylesheet" href="productosstyle.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -13,22 +14,9 @@
   <!-- Contenido de productos -->
   <section class="productos">
     <h1>Productos</h1>
+    <input type="text" id="buscador" placeholder="Buscar productos..." />
     <div class="productos-container">
-      <div class="producto">
-        <img src="../img/vino.png" alt="Vino Tabernero">
-        <h2>Vinos</h2>
-        <p>Elegantes y con cuerpo, nuestros vinos reflejan el alma de la vid peruana.</p>
-      </div>
-      <div class="producto">
-        <img src="../img/pisco.png" alt="Pisco Tabernero">
-        <h2>Piscos</h2>
-        <p>Orgullo nacional, destilado con uvas seleccionadas de nuestros viñedos.</p>
-      </div>
-      <div class="producto">
-        <img src="../img/espumante.png" alt="Espumante Tabernero">
-        <h2>Espumantes</h2>
-        <p>Refrescantes y festivos, para celebrar cada momento especial.</p>
-      </div>
+
     </div>
   </section>
 
@@ -36,8 +24,34 @@
   <footer>
     © 2025 Tabernero. Todos los derechos reservados.
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function actualizarContadorCarrito() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let total = 0;
+
+        carrito.forEach(item => {
+          total += item.cantidad;
+        });
+
+        const contador = document.getElementById('cart-count');
+        if (contador) {
+          contador.textContent = total;
+        }
+      }
+
+      // Esperamos que el topbar ya esté cargado antes de actualizar el contador
+      const intervalo = setInterval(() => {
+        if (document.getElementById('cart-count')) {
+          clearInterval(intervalo);
+          actualizarContadorCarrito();
+        }
+      }, 100);
+    });
+  </script>
   <script src="../componentes/topbar.js"></script>
-  <!--<script src="productos.js"></script>-->
+  <script src="productos.js"></script>
+
 
 </body>
 

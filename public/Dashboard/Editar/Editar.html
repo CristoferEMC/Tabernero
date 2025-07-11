@@ -3,21 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Editar Producto</title>
+    <title>Editar</title>
     <link rel="stylesheet" href="Editarstyle.css">
 </head>
 
 <body>
     <div class="editar-container">
-        <h1>Editar Producto</h1>
+        <h1 id="titulo-formulario">Editar</h1>
         <form id="form-editar">
-            <input type="hidden" id="producto-id">
-            <label>Nombre:</label>
-            <input type="text" id="nombre" required>
-            <label>Descripción:</label>
-            <textarea id="descripcion"></textarea>
-            <label>Precio:</label>
-            <input type="number" step="0.01" id="precio" required>
+            <input type="hidden" id="entidad-id">
+
+            <!-- 🟣 Campos comunes dinámicos (se muestran desde JS) -->
+
+            <!-- PRODUCTO -->
+            <div id="campos-producto" class="form-seccion" style="display: none;">
+                <label>Nombre:</label>
+                <input type="text" id="nombre">
+                <label>Descripción:</label>
+                <textarea id="descripcion"></textarea>
+                <label>Precio:</label>
+                <input type="number" step="0.01" id="precio">
+            </div>
+
+            <!-- CLIENTE -->
+            <div id="campos-cliente" class="form-seccion" style="display: none;">
+                <label>Nombre:</label>
+                <input type="text" id="nombre-cliente">
+                <label>Correo:</label>
+                <input type="email" id="correo-cliente">
+                <label>Teléfono:</label>
+                <input type="text" id="telefono-cliente">
+                <label>Dirección:</label>
+                <input type="text" id="direccion-cliente">
+            </div>
+            <!-- PEDIDO -->
+            <div id="campos-pedido" class="form-seccion" style="display: none;">
+                <label>Cliente:</label>
+                <input type="text" id="nombre-cliente-pedido" readonly>
+
+                <label>Estado del Pedido:</label>
+                <select id="estado-pedido" required>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="enviado">Enviado</option>
+                    <option value="entregado">Entregado</option>
+                </select>
+
+            </div>
+
             <button type="submit">Guardar Cambios</button>
             <a href="../dashboard.html">Cancelar</a>
         </form>

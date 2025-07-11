@@ -1,45 +1,100 @@
-// Obtener el ID desde la URL
 const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
+const tipo = params.get('tipo');
+const id = parseInt(params.get('id'));
 
-if (id) {
-  // Obtener los datos del producto desde el servidor
-  fetch(`/productos/${id}`)
-    .then(res => res.json())
-    .then(producto => {
-      document.getElementById('producto-id').value = producto.id;
-      document.getElementById('nombre').value = producto.nombre;
-      document.getElementById('descripcion').value = producto.descripcion;
-      document.getElementById('precio').value = producto.precio;
-    })
-    .catch(err => {
-      alert('Error al obtener el producto');
-      console.error(err);
-    });
-} else {
-  alert('ID de producto no especificado');
+if (!tipo || isNaN(id)) {
+  alert('❌ Falta el tipo o el ID es inválido en la URL');
+  window.location.href = '../dashboard.html';
 }
 
-// Enviar PUT al servidor
+
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById('form-editar').addEventListener('submit', async (e) => {
+  document.getElementById('entidad-id').value = id;
+
+  const titulo = document.getElementById('titulo-formulario');
+  const form = document.getElementById('form-editar');
+
+  // Mostrar campos según el tipo
+  if (tipo === 'producto') {
+    titulo.textContent = 'Editar Producto';
+    document.getElementById('campos-producto').style.display = 'block';
+
+    fetch(`/productos/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('nombre').value = data.nombre;
+        document.getElementById('descripcion').value = data.descripcion;
+        document.getElementById('precio').value = data.precio;
+      });
+
+  } else if (tipo === 'cliente') {
+    titulo.textContent = 'Editar Cliente';
+    document.getElementById('campos-cliente').style.display = 'block';
+
+    fetch(`/clientes/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('nombre-cliente').value = data.nombre;
+        document.getElementById('correo-cliente').value = data.correo;
+        document.getElementById('telefono-cliente').value = data.telefono;
+        document.getElementById('direccion-cliente').value = data.direccion;
+      });
+
+  } else if (tipo === 'pedido') {
+    titulo.textContent = 'Editar Pedido';
+    document.getElementById('campos-pedido').style.display = 'block';
+
+    fetch(`/pedidos/${id}`)
+      .then(res => res.json())
+      .then(pedido => {
+        document.getElementById('estado-pedido').value = pedido.estado;
+        document.getElementById('nombre-cliente-pedido').value = pedido.nombre_cliente;
+
+      });
+  }
+
+  // Enviar actualización
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const id = document.getElementById('producto-id').value;
-    const nombre = document.getElementById('nombre').value;
-    const descripcion = document.getElementById('descripcion').value;
-    const precio = document.getElementById('precio').value;
 
-    const res = await fetch(`/productos/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre, descripcion, precio })
-    });
+    let body = {};
+    let url = `/${tipo}s/${id}`; // Ej: /productos/1, /clientes/2, /pedidos/3
 
-    if (res.ok) {
-      alert('Producto actualizado correctamente');
-      window.location.href = '../dashboard.html';
-    } else {
-      alert('Error al actualizar producto');
+    if (tipo === 'producto') {
+      body = {
+        nombre: document.getElementById('nombre').value,
+        descripcion: document.getElementById('descripcion').value,
+        precio: document.getElementById('precio').value
+      };
+    } else if (tipo === 'cliente') {
+      body = {
+        nombre: document.getElementById('nombre-cliente').value,
+        correo: document.getElementById('correo-cliente').value,
+        telefono: document.getElementById('telefono-cliente').value,
+        direccion: document.getElementById('direccion-cliente').value
+      };
+    } else if (tipo === 'pedido') {
+      body = {
+        estado: document.getElementById('estado-pedido').value // ✅ Solo esto
+      };
+    }
+
+    try {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      if (res.ok) {
+        alert(`${tipo.charAt(0).toUpperCase() + tipo.slice(1)} actualizado correctamente`);
+        window.location.href = '../dashboard.html';
+      } else {
+        alert(`Error al actualizar ${tipo}`);
+      }
+    } catch (err) {
+      alert('Error de conexión con el servidor');
+      console.error(err);
     }
   });
 });

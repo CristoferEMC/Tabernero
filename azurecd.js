@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const sql = require('mssql');
 const app = express();
@@ -33,6 +34,7 @@ async function main() {
         const detallePedidosRoute = require('./routes/detalle-pedidos');
         const loginRoute = require('./routes/login');
         const registroRoute = require('./routes/registro');
+        
 
 
 

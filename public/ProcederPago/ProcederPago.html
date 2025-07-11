@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Finalizar Compra | Tabernero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ProcederPagostyle.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header id="topbar-container"></header>
+
+  <main class="pago-container">
+    <h1>🧾 Confirmación de Pedido</h1>
+
+    <!-- Resumen del pedido -->
+    <section class="resumen-pedido" id="resumen-pedido">
+      <!-- Aquí se cargará el resumen dinámico del pedido -->
+    </section>
+
+    <!-- Formulario de pago -->
+    <form class="formulario-pago" id="formulario-pago">
+      <h2>💳 Detalles de Pago</h2>
+
+      <!-- Campo: Nombre -->
+      <input type="text" id="nombre" placeholder="Nombre completo" required>
+
+      <!-- Tipo de entrega -->
+      <label for="entrega">Tipo de entrega:</label>
+      <div class="opciones-entrega">
+        <label>
+          <input type="radio" name="entrega" value="local" checked>
+          Recojo en el local
+        </label>
+        <label>
+          <input type="radio" name="entrega" value="delivery">
+          Delivery
+        </label>
+      </div>
+      <input type="text" id="direccion" placeholder="Dirección de entrega" style="display: none;">
+
+      <!-- Método de pago -->
+      <label for="pago">Método de pago:</label>
+      <div class="opciones-pago">
+        <label>
+          <input type="radio" name="pago" value="tarjeta" checked>
+          Tarjeta
+        </label>
+        <label>
+          <input type="radio" name="pago" value="yape">
+          Yape
+        </label>
+      </div>
+
+      <!-- Formulario: Pago con Tarjeta -->
+      <div id="form-tarjeta">
+        <input type="text" id="tarjeta-numero" placeholder="Número de tarjeta" maxlength="16" required>
+        <input type="text" id="tarjeta-fecha" placeholder="Fecha de expiración (MM/AA)" required>
+        <input type="text" id="tarjeta-cvv" placeholder="CVV" maxlength="3" required>
+      </div>
+
+      <!-- Formulario: Pago con Yape -->
+      <div id="form-yape" style="display: none;">
+        <input type="text" id="yape-celular" placeholder="Número de celular (9 dígitos)" maxlength="9">
+        <input type="text" id="yape-codigo" placeholder="Código de confirmación">
+      </div>
+
+      <!-- Botón de confirmación -->
+      <button type="submit" class="btn-pagar">Confirmar Compra</button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 Tabernero. Todos los derechos reservados.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/componentes/topbar.js"></script>
+<script src="ProcederPago.js"></script>
+</body>
+</html>

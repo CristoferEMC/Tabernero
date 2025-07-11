@@ -14,6 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetSection) targetSection.classList.add('active');
     if (targetLink) targetLink.classList.add('active');
   }
+  // 🔐 Funcionalidad para el botón "Salir"
+  const btnSalir = document.getElementById('btn-salir');
+  if (btnSalir) {
+    btnSalir.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      setTimeout(() => {
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('seccionActiva'); // 👈 limpia sección recordada
+        window.location.href = '/index.html';
+      }, 50); // da tiempo a que se liberen recursos o cierre visualmente el panel
+    });
+  }
+
+
+
+
+
 
   // Navegación entre secciones
   links.forEach(link => {
@@ -57,8 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const eliminarBtn = fila.querySelector('.delete');
 
           editarBtn.addEventListener('click', () => {
-            window.location.href = `Editar/Editar.html?id=${producto.id}`;
+            window.location.href = `Editar/Editar.html?tipo=producto&id=${producto.id}`;
           });
+
 
           eliminarBtn.addEventListener('click', () => {
             window.location.href = `Eliminar/Eliminar.html?id=${producto.id}`;
@@ -78,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fila = document.createElement('tr');
         fila.innerHTML = `
           <td>${pedido.nombre_cliente}</td>
-          <td>${pedido.nombre_producto}</td>
+          <td>${pedido.productos}</td>
           <td>${pedido.estado}</td>
           <td>
             <button class="edit">Editar</button>
@@ -92,8 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const eliminarBtn = fila.querySelector('.delete');
 
         editarBtn.addEventListener('click', () => {
-          window.location.href = `Editar/Editar.html?id=${pedido.id}`;
+          window.location.href = `Editar/Editar.html?tipo=pedido&id=${pedido.id}`;
         });
+
+
 
         eliminarBtn.addEventListener('click', () => {
           window.location.href = `Eliminar/Eliminar.html?id=${pedido.id}`;
@@ -126,8 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const eliminarBtn = fila.querySelector('.delete');
 
         editarBtn.addEventListener('click', () => {
-          window.location.href = `Editar/Editar.html?id=${cliente.id}`;
+          window.location.href = `Editar/Editar.html?tipo=cliente&id=${cliente.id}`;
         });
+
 
         eliminarBtn.addEventListener('click', () => {
           window.location.href = `Eliminar/Eliminar.html?id=${cliente.id}`;
@@ -146,4 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (sectionElement) sectionElement.classList.add('active');
     }
   }
+  // 👉 Agregar funcionalidad al botón "Crear Producto"
+  const btnCrear = document.getElementById('btn-crear-producto');
+  if (btnCrear) {
+    btnCrear.addEventListener('click', () => {
+      window.location.href = 'Crear/Crear.html';
+    });
+  }
+
 });

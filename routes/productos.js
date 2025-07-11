@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const sql = require('mssql');
 const dbConfig = require('../dbConfig');
+const multer = require('multer');
+const path = require('path');
+const { subirImagenAzure } = require('../utils/azureStorage');
+
 
 // Obtener todos los productos
 router.get('/', async (req, res) => {
@@ -15,16 +19,18 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obtener un producto por ID
 router.get('/:id', async (req, res) => {
-  try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) return res.status(400).json({ error: 'ID inválido' }); // Validación segura
+  const { id } = req.params;
 
+  // Validar que ID sea numérico
+  if (isNaN(id)) {
+    return res.status(400).json({ error: 'ID inválido. Debe ser un número.' });
+  }
+
+  try {
     const pool = await sql.connect(dbConfig);
-    const result = await pool
-      .request()
-      .input('id', sql.Int, id)
+    const result = await pool.request()
+      .input('id', sql.Int, parseInt(id)) // asegurar entero
       .query('SELECT * FROM productos WHERE id = @id');
 
     if (result.recordset.length === 0) {
@@ -34,9 +40,10 @@ router.get('/:id', async (req, res) => {
     res.json(result.recordset[0]);
   } catch (err) {
     console.error('Error al obtener producto por ID:', err.message);
-    res.status(500).json({ error: 'Error al obtener producto por ID' });
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
+
 
 // ✅ Actualizar un producto (PUT)
 router.put('/:id', async (req, res) => {
@@ -66,5 +73,30 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ error: 'Error al actualizar producto' });
   }
 });
+
+
+
+const upload = multer(); // usar memoria
+
+router.post('/', upload.single('imagen'), async (req, res) => {
+  const { nombre, descripcion, precio } = req.body;
+  const imagen = req.file;
+
+  try {
+    // Subir imagen y obtener URL
+    const urlImagen = await subirImagenAzure(imagen);
+
+    // Guardar en base de datos
+    await sql.query`
+      INSERT INTO productos (nombre, descripcion, precio, imagen_url)
+      VALUES (${nombre}, ${descripcion}, ${precio}, ${urlImagen})
+    `;
+    res.status(201).send({ message: 'Producto creado con imagen' });
+  } catch (error) {
+    console.error('❌ Error al crear producto con imagen:', error);
+    res.status(500).send({ error: 'Error interno' });
+  }
+});
+
 
 module.exports = router;

@@ -4,44 +4,63 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(html => {
       document.getElementById('topbar-container').innerHTML = html;
 
-      const usuario = localStorage.getItem('usuarioNombre');
+      const usuarioData = JSON.parse(localStorage.getItem('usuario'));
       const enlaceUsuario = document.getElementById('usuario-enlace');
       const nombreUsuario = document.getElementById('nombre-usuario');
       const iconoUsuario = document.getElementById('icono-usuario');
       const dropdown = document.getElementById('usuario-dropdown');
-      const cerrarSesionBtn = document.getElementById('cerrar-sesion');
 
-      if (usuario) {
-        const primerNombre = usuario.split(' ')[0];
+      if (usuarioData && usuarioData.nombre && usuarioData.rol) {
+        const primerNombre = usuarioData.nombre.split(' ')[0];
         nombreUsuario.textContent = primerNombre;
         iconoUsuario.style.display = 'inline';
         enlaceUsuario.href = '#';
 
-        // Mostrar menú al hacer click
         enlaceUsuario.addEventListener('click', (e) => {
           e.preventDefault();
           dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Botón cerrar sesión
-        if (cerrarSesionBtn) {
-          cerrarSesionBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('usuarioNombre');
-            window.location.href = '/index.html';
-          });
+        let htmlDropdown = `<a href="../Pedidos/pedidos.html">📦 Pedidos</a>`;
+        if (usuarioData.rol === 'trabajador') {
+          htmlDropdown += `<a href="/dashboard/dashboard.html">⚙️ Panel</a>`;
         }
+        htmlDropdown += `<a href="#" id="cerrar-sesion">🚪 Cerrar sesión</a>`;
+        dropdown.innerHTML = htmlDropdown;
 
-        // Ocultar el dropdown si hace clic fuera
+        // 👉 Re-agregar el evento después de inyectar el HTML
+        setTimeout(() => {
+          const cerrarSesionBtn = document.getElementById('cerrar-sesion');
+          if (cerrarSesionBtn) {
+            cerrarSesionBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              localStorage.removeItem('usuario');
+              localStorage.removeItem('seccionActiva'); // 👈 muy importante
+              window.location.href = '/index.html';
+            });
+          }
+        }, 50);
+
         document.addEventListener('click', (event) => {
           if (!document.getElementById('usuario-nav').contains(event.target)) {
             dropdown.style.display = 'none';
           }
         });
+
       } else {
-        // Si no está logueado, mantener enlace a login
         enlaceUsuario.href = '../Login/login.html';
+        nombreUsuario.textContent = 'INGRESAR';
+        iconoUsuario.style.display = 'none';
       }
+
+      const actualizarContadorCarrito = () => {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const total = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+        const contador = document.getElementById('cart-count');
+        if (contador) contador.textContent = total;
+      };
+
+      actualizarContadorCarrito();
     })
     .catch(err => console.error('❌ Error al cargar topbar:', err));
 });
