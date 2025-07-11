@@ -2,7 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll('.sidebar a[data-section]');
   const sections = document.querySelectorAll('.dashboard-section');
 
-  // Cambiar visibilidad de secciones
+  // Restaurar sección activa desde localStorage (si existe)
+  const ultimaSeccion = localStorage.getItem('seccionActiva');
+  if (ultimaSeccion) {
+    sections.forEach(section => section.classList.remove('active'));
+    links.forEach(link => link.classList.remove('active'));
+
+    const targetSection = document.getElementById(ultimaSeccion);
+    const targetLink = document.querySelector(`.sidebar a[data-section="${ultimaSeccion}"]`);
+
+    if (targetSection) targetSection.classList.add('active');
+    if (targetLink) targetLink.classList.add('active');
+  }
+
+  // Navegación entre secciones
   links.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -13,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       links.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
+
+      localStorage.setItem('seccionActiva', targetId);
     });
   });
 
@@ -36,12 +51,24 @@ document.addEventListener("DOMContentLoaded", () => {
             </td>
           `;
           tbody.appendChild(fila);
+
+          // Redirigir al editar/eliminar con ID
+          const editarBtn = fila.querySelector('.edit');
+          const eliminarBtn = fila.querySelector('.delete');
+
+          editarBtn.addEventListener('click', () => {
+            window.location.href = `Editar/Editar.html?id=${producto.id}`;
+          });
+
+          eliminarBtn.addEventListener('click', () => {
+            window.location.href = `Eliminar/Eliminar.html?id=${producto.id}`;
+          });
         });
       }
     })
     .catch(error => console.error('❌ Error al cargar productos:', error));
 
-  // 🔄 Cargar pedidos con nombre del cliente y producto
+  // 🔄 Cargar pedidos
   fetch('/pedidos')
     .then(res => res.json())
     .then(data => {
@@ -59,11 +86,23 @@ document.addEventListener("DOMContentLoaded", () => {
           </td>
         `;
         tbody.appendChild(fila);
+
+        // Redirigir con ID de pedido
+        const editarBtn = fila.querySelector('.edit');
+        const eliminarBtn = fila.querySelector('.delete');
+
+        editarBtn.addEventListener('click', () => {
+          window.location.href = `Editar/Editar.html?id=${pedido.id}`;
+        });
+
+        eliminarBtn.addEventListener('click', () => {
+          window.location.href = `Eliminar/Eliminar.html?id=${pedido.id}`;
+        });
       });
     })
     .catch(err => console.error('❌ Error al cargar pedidos:', err));
 
-  // 🔄 Cargar clientes con nombre, correo y teléfono
+  // 🔄 Cargar clientes
   fetch('/clientes')
     .then(res => res.json())
     .then(data => {
@@ -81,7 +120,30 @@ document.addEventListener("DOMContentLoaded", () => {
           </td>
         `;
         tbody.appendChild(fila);
+
+        // Redirigir con ID de cliente
+        const editarBtn = fila.querySelector('.edit');
+        const eliminarBtn = fila.querySelector('.delete');
+
+        editarBtn.addEventListener('click', () => {
+          window.location.href = `Editar/Editar.html?id=${cliente.id}`;
+        });
+
+        eliminarBtn.addEventListener('click', () => {
+          window.location.href = `Eliminar/Eliminar.html?id=${cliente.id}`;
+        });
       });
     })
     .catch(err => console.error('❌ Error al cargar clientes:', err));
+
+  // Activar sección por defecto (Inicio) si no hay una previa guardada
+  if (!ultimaSeccion) {
+    const defaultSection = document.querySelector('.sidebar a[data-section]');
+    if (defaultSection) {
+      defaultSection.classList.add('active');
+      const sectionId = defaultSection.getAttribute('data-section');
+      const sectionElement = document.getElementById(sectionId);
+      if (sectionElement) sectionElement.classList.add('active');
+    }
+  }
 });

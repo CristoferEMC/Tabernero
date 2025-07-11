@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="Editarstyle.css">
+</head>
+
+<body>
+    <div class="editar-container">
+        <h1>Editar Producto</h1>
+        <form id="form-editar">
+            <input type="hidden" id="producto-id">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" required>
+            <label>Descripción:</label>
+            <textarea id="descripcion"></textarea>
+            <label>Precio:</label>
+            <input type="number" step="0.01" id="precio" required>
+            <button type="submit">Guardar Cambios</button>
+            <a href="../dashboard.html">Cancelar</a>
+        </form>
+    </div>
+
+</body>
+<script src="Editar.js"></script>
+
+</html>

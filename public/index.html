@@ -5,25 +5,14 @@
   <meta charset="UTF-8">
   <title>Tabernero</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
   <!-- Encabezado y menú -->
-  <header>
-    <nav class="topbar">
-      <div class="topbar-container">
-        <div class="logo">
-          <span class="rojo">TAB</span><span class="blanco">ERN</span><span class="rojo">ERO</span>
-        </div>
-        <ul class="menu">
-          <li><a href="index.html">INICIO</a></li>
-          <li><a href="productos/productos.html">PRODUCTOS</a></li>
-          <li><a href="nosotros.html">NOSOTROS</a></li>
-          <li><a href="Login/login.html">INICIAR SECION</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <header id="topbar-container"></header>
+
 
   <!-- Carrusel -->
   <section class="hero-carousel">
@@ -78,22 +67,23 @@
   <section class="destacados" id="productos">
     <h2>Nuestros Productos</h2>
     <div class="card-container">
-      <div class="card">
+      <div class="card" onclick="location.href='/productos/productos.html'">
         <img src="./img/vino.png" alt="Vinos">
         <h3>Vinos</h3>
         <p>Elegantes y con cuerpo, nuestros vinos reflejan el alma de la vid peruana.</p>
       </div>
-      <div class="card">
+      <div class="card" onclick="location.href='/productos/productos.html'">
         <img src="./img/pisco.png" alt="Piscos">
         <h3>Piscos</h3>
         <p>Orgullo nacional, destilado con uvas seleccionadas de nuestros viñedos.</p>
       </div>
-      <div class="card">
+      <div class="card" onclick="location.href='/productos/productos.html'">
         <img src="./img/espumante.png" alt="Espumantes">
         <h3>Espumantes</h3>
         <p>Refrescantes y festivos, para celebrar cada momento especial.</p>
       </div>
     </div>
+
   </section>
 
   <!-- Sección: Viñedos -->
@@ -142,7 +132,10 @@
   </footer>
 
   <!-- Script del carrusel -->
-  <script src="anim.js"></script>
+  <script src="/anim.js"></script>
+  <script src="/componentes/topbar.js"></script>
+
+
 </body>
 
 </html>

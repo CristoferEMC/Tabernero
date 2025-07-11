@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mis Pedidos | Tabernero</title>
+  <link rel="stylesheet" href="pedidostyle.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header id="topbar-container"></header>
+
+  <section class="pedidos">
+    <h1><i class="fa-solid fa-box"></i> Mis Pedidos</h1>
+    <div class="tabla-pedidos">
+      <table>
+        <thead>
+          <tr>
+            <th># Pedido</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Total</th>
+            <th>Detalles</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-pedidos-body">
+          <!-- Datos se cargarán dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Tabernero. Todos los derechos reservados.
+  </footer>
+
+  <script src="../componentes/topbar.js"></script>
+  <script src="pedidos.js"></script>
+</body>
+</html>

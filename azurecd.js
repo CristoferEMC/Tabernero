@@ -32,6 +32,9 @@ async function main() {
         const pedidosRoute = require('./routes/pedidos');
         const detallePedidosRoute = require('./routes/detalle-pedidos');
         const loginRoute = require('./routes/login');
+        const registroRoute = require('./routes/registro');
+
+
 
         // Registrar rutas
         app.use('/usuarios', usuariosRoute);
@@ -41,6 +44,7 @@ async function main() {
         app.use('/pedidos', pedidosRoute);
         app.use('/detalle-pedidos', detallePedidosRoute);
         app.use('/login', loginRoute);
+        app.use('/registro', registroRoute);
 
         // Ruta raíz de prueba
         // Ruta raíz: redirige al index.html

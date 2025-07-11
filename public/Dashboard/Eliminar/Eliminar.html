@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eliminar Producto</title>
+  <link rel="stylesheet" href="Eliminarstyle.css">
+</head>
+<body>
+  <div class="eliminar-container">
+    <h1>¿Deseas eliminar este producto?</h1>
+    <p id="producto-info"></p>
+    <button id="btn-confirmar">Sí, eliminar</button>
+    <a href="../dashboard.html">Cancelar</a>
+  </div>
+
+  <script>
+    const producto = JSON.parse(localStorage.getItem('productoEliminar'));
+    if (producto) {
+      document.getElementById('producto-info').textContent =
+        `Producto: ${producto.nombre} - Precio: S/ ${producto.precio}`;
+    }
+
+    document.getElementById('btn-confirmar').addEventListener('click', async () => {
+      const res = await fetch(`/productos/${producto.id}`, {
+        method: 'DELETE'
+      });
+
+      if (res.ok) {
+        alert('Producto eliminado correctamente');
+        window.location.href = '../dashboard.html';
+      } else {
+        alert('Error al eliminar producto');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+body {
+  font-family: sans-serif;
+  background-color: #fbe9e7;
+  padding: 40px;
+}
+
+.eliminar-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 25px;
+  background: #fff3f0;
+  border: 2px solid #f44336;
+  border-radius: 10px;
+  text-align: center;
+}
+
+h1 {
+  color: #d32f2f;
+}
+
+button {
+  padding: 10px 20px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #333;
+  text-decoration: none;
+}

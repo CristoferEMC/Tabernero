@@ -57,6 +57,35 @@ body {
   color: #a8884b;
 }
 
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 10px;
+  right: 0;
+  z-index: 1000;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.dropdown-menu{
+  background-color: #000;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+
 /* Carrusel */
 .hero-carousel {
   position: relative;
@@ -201,6 +230,7 @@ body {
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .card:hover {

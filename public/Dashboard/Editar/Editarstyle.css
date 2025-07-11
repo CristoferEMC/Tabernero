@@ -1,0 +1,96 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo global */
+body {
+  font-family: 'Arial';
+  background: linear-gradient(135deg, #ffd0d0, #ffffff);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor del formulario */
+.editar-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 35px 30px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.editar-container:hover {
+  transform: translateY(-3px);
+}
+
+/* Título */
+.editar-container h1 {
+  text-align: center;
+  color: #000000;
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #000000;
+  font-size: 15px;
+}
+
+/* Inputs y textarea */
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #fdfdfd;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.5);
+  outline: none;
+}
+
+/* Botón de guardar */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #ff0000;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Enlace de cancelar */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #000;
+}
