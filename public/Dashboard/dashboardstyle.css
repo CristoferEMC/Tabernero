@@ -49,6 +49,29 @@ body {
   font-size: 1.3rem;
   font-weight: normal;
 }
+.bienvenida-box {
+    background: #fff6f0;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.bienvenida-box h1 {
+    font-size: 2em;
+    color: #7b1fa2;
+    margin-bottom: 10px;
+}
+
+.bienvenida-box p {
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 10px;
+}
+
 
 /* Menú lateral */
 .sidebar nav ul {

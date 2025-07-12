@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  const nombreBienvenida = document.getElementById('nombre-usuario-bienvenida');
+  if (nombreBienvenida && usuarioData.nombre) {
+    const primerNombre = usuarioData.nombre.split(' ')[0];
+    nombreBienvenida.textContent = primerNombre;
+  }
 
 
 

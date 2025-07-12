@@ -75,7 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     } else if (tipo === 'pedido') {
       body = {
-        estado: document.getElementById('estado-pedido').value // ✅ Solo esto
+        estado: document.getElementById('estado-pedido').value
+      };
+    } else if (tipo === 'usuario') {
+      body = {
+        nombre: document.getElementById('nombre-usuario').value,
+        correo: document.getElementById('correo-usuario').value,
+        contrasena: document.getElementById('contrasena-usuario').value
       };
     }
 
@@ -97,4 +103,5 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(err);
     }
   });
+
 });
