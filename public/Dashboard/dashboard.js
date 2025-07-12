@@ -28,14 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-  const nombreBienvenida = document.getElementById('nombre-usuario-bienvenida');
-  if (nombreBienvenida && usuarioData.nombre) {
-    const primerNombre = usuarioData.nombre.split(' ')[0];
-    nombreBienvenida.textContent = primerNombre;
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  if (usuario && usuario.nombre) {
+    document.getElementById('nombre-usuario-bienvenida').textContent = usuario.nombre;
   }
-
-
+  
 
 
   // Navegación entre secciones

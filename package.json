@@ -1,9 +1,9 @@
 {
   "name": "tabernero",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "azurecd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Sin pruebas, continúe...\""
   },
   "keywords": [],
   "author": "",
